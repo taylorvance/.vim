@@ -79,6 +79,9 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " close vim if NERDTree is the only thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" insert 1 space after the comment delimiter
+let g:NERDSpaceDelims = 1
+
 " easier tab traversal
 nnoremap <C-l> gt
 nnoremap <C-h> gT
