@@ -2,11 +2,15 @@
 set nocompatible
 
 filetype off
-"call pathogen#runtime_append_all_bundles()
 execute pathogen#infect()
 filetype plugin indent on
 
 syntax on
+
+" NERDTree shortcut
+map <C-n> :NERDTreeToggle<CR>
+" close vim if NERDTree is the only thing open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " prevents some security exploits
 set modelines=0
