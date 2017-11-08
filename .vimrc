@@ -7,11 +7,6 @@ filetype plugin indent on
 
 syntax on
 
-" NERDTree shortcut
-map <C-n> :NERDTreeToggle<CR>
-" close vim if NERDTree is the only thing open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " prevents some security exploits
 set modelines=0
 
@@ -69,7 +64,7 @@ set formatoptions=qrn1
 "set colorcolumn=85
 
 " show invisible chars
-nmap <leader>l :set list!<CR>
+nnoremap <leader>l :set list!<CR>
 "set list
 set listchars=tab:▸\ ,eol:¬
 
@@ -78,6 +73,15 @@ nnoremap <leader>v V`]
 
 " use jj to quickly get from insert to normal
 inoremap jj <ESC>
+
+" NERDTree shortcut
+nnoremap <leader>n :NERDTreeToggle<CR>
+" close vim if NERDTree is the only thing open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" easier tab traversal
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 
 set mouse=a
 set clipboard=unnamed
