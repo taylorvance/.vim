@@ -19,6 +19,7 @@ set encoding=utf-8
 
 set background=dark
 "colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
+colorscheme default
 set number					" precede each line with its line number
 set relativenumber			" for each line except current, show number relative to current line
 set cursorline				" underline current line
