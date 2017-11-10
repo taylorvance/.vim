@@ -18,11 +18,10 @@ set encoding=utf-8
 "--------"
 
 set background=dark
-"colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
-colorscheme default
+colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
 set number					" precede each line with its line number
 set relativenumber			" for each line except current, show number relative to current line
-set cursorline				" underline current line
+set cursorline				" highlight current line
 set ruler					" show cursor's line and column number
 set laststatus=2			" always show the status line
 set showcmd					" show prev cmd in bottom
