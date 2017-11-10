@@ -57,6 +57,12 @@ nnoremap <leader><space> :noh<cr>
 nnoremap / /\v
 vnoremap / /\v
 
+" open CtrlP files in new tab by default
+let g:ctrlp_prompt_mappings = {
+	\ 'AcceptSelection("e")': ['<c-t>'],
+	\ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+	\ }
+
 
 "----------------"
 "-- NAVIGATION --"
