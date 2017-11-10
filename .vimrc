@@ -17,16 +17,20 @@ set encoding=utf-8
 "-- UI --"
 "--------"
 
-set cursorline			" underline current line
-set number				" precede each line with its line number
-set relativenumber		" for each line except current, show number relative to current line
-set ruler				" show cursor's line and column number
-set lazyredraw			" prevents redraw when executing macros, registers, and non-typed commands
-set showcmd				" show prev cmd in bottom
-set showmatch			" highlight matching bracket
-set showmode			" if in Insert, Replace, or Visual mode, show in bottom left
-set wrap
+set number					" precede each line with its line number
+set relativenumber			" for each line except current, show number relative to current line
+set cursorline				" underline current line
+set ruler					" show cursor's line and column number
+set laststatus=2			" always show the status line
+set showcmd					" show prev cmd in bottom
+set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
+set showmatch				" highlight matching bracket
+set wrap					" visually wrap a line if it's wider than the window
 set formatoptions=qrn1
+set visualbell				" don't beep
+set lazyredraw				" prevents redraw when executing macros, registers, and non-typed commands
+set mouse=a					" enable mouse in all modes
+set clipboard=unnamedplus	" use the system clipboard
 
 " tabs are 4 columns wide, each indentation level is one tab
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -53,21 +57,18 @@ nnoremap <leader><space> :noh<cr>
 nnoremap / /\v
 vnoremap / /\v
 
-" CtrlP to open files in new buffers
-let g:ctrlp_switch_buffer = 0
-
 
 "----------------"
 "-- NAVIGATION --"
 "----------------"
 
-set scrolloff=3
+set scrolloff=3			" keep a 3-line padding above and below the cursor
 
 " quicker tab traversal
 nnoremap <C-l> gt
 nnoremap <C-h> gT
 
-" move cursor by display lines when a line is wrapped
+" move cursor by display lines (helps when a line is wrapped)
 nnoremap j gj
 nnoremap k gk
 
@@ -75,36 +76,26 @@ nnoremap k gk
 nnoremap <tab> %
 vnoremap <tab> %
 
-" disable arrow keys in normal mode
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-
 
 
 
 "//.pick up here
 
-set autoindent
+set autoindent		" copy the current line's indent when starting a new one
 set hidden
-set visualbell
 set ttyfast
 set backspace=indent,eol,start
-set laststatus=2
 set undofile
 set history=1000
-set mouse=a
-set clipboard=unnamed
 set gdefault
 
-" now we don't have to use shift to save, etc
+" save a keystroke (shift) with every command (save, quit, etc)
 nnoremap ; :
 
 " reselect pasted text
 nnoremap <leader>v V`]
 
-" use jj to quickly get from insert to normal
+" use jj to quickly get out of insert mode
 inoremap jj <ESC>
 
 " NERDTree shortcut
@@ -114,6 +105,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " maintain clipboard after pasting
 xnoremap p "_dP
+
 " stay in visual mode after tab shift
 vnoremap < <gv
 vnoremap > >gv
