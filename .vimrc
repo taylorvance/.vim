@@ -1,7 +1,6 @@
 " Taylor Vance
 
 set nocompatible	" no vi compatibility
-
 set modelines=0		" prevents some security exploits
 
 filetype off
@@ -10,7 +9,7 @@ filetype plugin indent on
 
 syntax on
 
-let mapleader = ","
+let mapleader=","			" easier than backslash
 
 set encoding=utf-8
 
