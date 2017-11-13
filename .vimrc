@@ -1,3 +1,5 @@
+" Taylor Vance
+
 set nocompatible	" no vi compatibility
 
 set modelines=0		" prevents some security exploits
@@ -17,7 +19,7 @@ set encoding=utf-8
 "-- UI --"
 "--------"
 
-set background=dark
+set background=dark			" use dark background (duh)
 colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
 set number					" precede each line with its line number
 set relativenumber			" for each line except current, show number relative to current line
@@ -28,7 +30,7 @@ set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
 set wrap					" visually wrap a line if it's wider than the window
-set formatoptions=qrn1
+set linebreak				" don't break words when wrapping
 set visualbell				" don't beep
 set lazyredraw				" prevents redraw when executing macros, registers, and non-typed commands
 set mouse=a					" enable mouse in all modes
@@ -37,9 +39,26 @@ set clipboard=unnamedplus	" use the system clipboard
 " tabs are 4 columns wide, each indentation level is one tab
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
+" folding
+set foldenable				" enable folding
+set foldlevelstart=10		" fold very nested indents (10 deep) by default
+set foldnestmax=10			" don't let us fold too many folds
+set foldmethod=indent		" fold based on indent level
+nnoremap <space> za			" toggle fold with space
+
 " show invisible chars
 set listchars=tab:▸\ ,eol:¬
 nnoremap <leader>l :set list!<CR>
+
+" highlight last-pasted text
+nnoremap <leader>v V`]
+
+" highlight last-inserted text
+nnoremap gV `[v`]
+
+" stay in visual mode after tab shift
+vnoremap < <gv
+vnoremap > >gv
 
 
 "------------"
@@ -85,9 +104,9 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 
-
-
-"//.pick up here
+"----------"
+"-- MISC --"
+"----------"
 
 set autoindent		" copy the current line's indent when starting a new one
 set hidden
@@ -97,11 +116,12 @@ set undofile
 set history=1000
 set gdefault
 
+" edit vimrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
 " save a keystroke (shift) with every command (save, quit, etc)
 nnoremap ; :
-
-" reselect pasted text
-nnoremap <leader>v V`]
 
 " use jj to quickly get out of insert mode
 inoremap jj <ESC>
@@ -113,10 +133,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " maintain clipboard after pasting
 xnoremap p "_dP
-
-" stay in visual mode after tab shift
-vnoremap < <gv
-vnoremap > >gv
 
 
 
