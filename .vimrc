@@ -148,4 +148,4 @@ let @d = 'oecho(1&&isDev()?dt_dump($query):"");jjbb'
 
 " Commands
 " Open current page in container 8
-"command Container :tabedit scp://10.0.6.152//var/www/html/container_8/%:p:.
+command C8 :tabedit scp://10.0.6.152//var/www/html/container_8/%:p:.
