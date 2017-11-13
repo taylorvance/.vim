@@ -48,7 +48,7 @@ set foldmethod=indent		" fold based on indent level
 nnoremap <space> za
 
 " toggle background dark/light
-map <Leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
+map <leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
 
 " show invisible chars
 set listchars=tab:▸\ ,eol:¬
