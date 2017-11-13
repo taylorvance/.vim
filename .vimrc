@@ -44,7 +44,11 @@ set foldenable				" enable folding
 set foldlevelstart=10		" fold very nested indents (10 deep) by default
 set foldnestmax=10			" don't let us fold too many folds
 set foldmethod=indent		" fold based on indent level
-nnoremap <space> za			" toggle fold with space
+" toggle fold with space
+nnoremap <space> za
+
+" toggle background dark/light
+map <Leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
 
 " show invisible chars
 set listchars=tab:▸\ ,eol:¬
@@ -116,7 +120,7 @@ set undofile
 set history=1000
 set gdefault
 
-" edit vimrc and load vimrc bindings
+" quickly edit and load vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
@@ -139,7 +143,7 @@ xnoremap p "_dP
 " stuff for DT...this should probably live somewhere else
 
 " Macros
-"let @d = 'oecho(1&&isDev()?dt_dump($query):"");^[bb'
+let @d = 'oecho(1&&isDev()?dt_dump($query):"");jjbb'
 "let @c = 'dO/*^M*/^[P'
 
 " Commands
