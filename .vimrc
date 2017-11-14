@@ -107,14 +107,24 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 
+"-------------"
+"-- EDITING --"
+"-------------"
+
+set autoindent							" copy the current line's indent when starting a new one
+set backspace=indent,eol,start			" allow backspacing over autoindent, line breaks, and the start of insert
+set runtimepath+=~/.vim/my-snippets/	" make sure vim sees my custom snippets
+
+" maintain clipboard after pasting
+xnoremap p "_dP
+
+
 "----------"
 "-- MISC --"
 "----------"
 
-set autoindent		" copy the current line's indent when starting a new one
 set hidden
 set ttyfast
-set backspace=indent,eol,start
 set undofile
 set history=1000
 set gdefault
@@ -134,17 +144,8 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " close vim if NERDTree is the only thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" maintain clipboard after pasting
-xnoremap p "_dP
-
 
 
 " stuff for DT...this should probably live somewhere else
-
-" Macros
-let @d = 'oecho(1&&isDev()?dt_dump($query):"");jjbb'
-"let @c = 'dO/*^M*/^[P'
-
-" Commands
 " Open current page in container 8
 command! C8 :tabedit scp://10.0.6.152//var/www/html/container_8/%:p:.

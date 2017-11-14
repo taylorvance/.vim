@@ -1,0 +1,17 @@
+extends javascript, html
+
+snippet ddmp "echo(1&&isDev()?dt_dump( ... ):'');"
+echo(1&&isDev()?dt_dump($${0:query}):"");
+endsnippet
+
+snippet isdev "if (1&&isDev()) { ... }"
+if(1&&isDev()) {
+	${0}
+}
+endsnippet
+
+" override default foreach (no empty line between braces)
+snippet foreach "foreach ($ary as $val) { ... }"
+foreach ($${1:ary} as $${2:val}) {
+}
+endsnippet
