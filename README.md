@@ -48,15 +48,33 @@ git submodule update
   * Solarized dark colorscheme
 
 
-## Extend
+## Plugin Management
 
 To add a new plugin:
 
 ```
 cd ~/.vim/bundle/
-git submodule add https://github.com/username/name-of-repo.git
+git submodule add https://github.com/username/reponame.git
 git submodule init
 git submodule update
+```
+
+*Note: You will need to run the `init` and `update` cmds when pulling new plugins from the repo.*
+
+To remove a plugin:
+
+```
+cd ~/.vim/
+git submodule deinit bundle/reponame/
+git rm -rf bundle/reponame/
+rm -rf .git/bundle/reponame/
+```
+
+To update all plugins:
+
+```
+cd ~/.vim/
+git submodule foreach git pull origin master
 ```
 
 
