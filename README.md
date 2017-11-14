@@ -91,3 +91,5 @@ If you're using tmux, you can try these steps:
 * Add this line to ~/.bashrc: `alias tmux="tmux -2"`
 * Add this line to ~/.tmux.conf: `set -g default-terminal "screen-256color"`
 * Then run `source ~/.bashrc`
+
+In iTerm2 (and maybe others), if certain terminal commands yield invisible text (Mocha does in my experience), increase "Minimum contrast" a bit in your terminal profile color settings.
