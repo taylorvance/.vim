@@ -77,9 +77,8 @@ set ignorecase smartcase	" if search string is all lc, ignore case. else, case-s
 " quickly clear highlighted search terms
 nnoremap <leader><space> :noh<cr>
 
-" don't use grep by default when searching
-nnoremap / /\v
-vnoremap / /\v
+" search by plain text (only \ has special meaning) (very nomagic)
+nnoremap / /\V
 
 " open CtrlP files in new tab by default
 let g:ctrlp_prompt_mappings = {
@@ -132,6 +131,8 @@ set gdefault
 " quickly edit and load vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+" clear the highlight when it's reloaded
+noh
 
 " save a keystroke (shift) with every command (save, quit, etc)
 nnoremap ; :
