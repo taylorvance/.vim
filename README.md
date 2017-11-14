@@ -59,7 +59,7 @@ git submodule init
 git submodule update
 ```
 
-*Note: You will need to run the `init` and `update` cmds when pulling new plugins from the repo.*
+*Note: You will need to run the `init` and `update` cmds when pulling new plugins from remote.*
 
 To remove a plugin:
 
