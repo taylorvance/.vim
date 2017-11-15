@@ -86,6 +86,9 @@ set scrolloff=3			" keep a 3-line padding above and below the cursor
 " quicker tab traversal
 nnoremap <C-l> gt
 nnoremap <C-h> gT
+" disable old way to break the habit
+nnoremap gt <nop>
+nnoremap gT <nop>
 
 " move cursor by display lines (helps when a line is wrapped)
 nnoremap j gj
