@@ -53,16 +53,6 @@ map <leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
 set listchars=tab:▸\ ,eol:¬
 nnoremap <leader>l :set list!<CR>
 
-" highlight last-pasted text
-nnoremap <leader>v V`]
-
-" highlight last-inserted text
-nnoremap gV `[v`]
-
-" stay in visual mode after tab shift
-vnoremap < <gv
-vnoremap > >gv
-
 
 "------------"
 "-- SEARCH --"
@@ -114,9 +104,18 @@ set autoindent							" copy the current line's indent when starting a new one
 set backspace=indent,eol,start			" allow backspacing over autoindent, line breaks, and the start of insert
 set runtimepath+=~/.vim/my-snippets/	" make sure vim sees my custom snippets
 
-" maintain clipboard after pasting
+" stay in visual mode after left or right shift
+vnoremap [ <gv
+vnoremap ] >gv
+
+" maintain clipboard after pasting over something in visual mode
 xnoremap p "_dP
 
+" highlight last-pasted text
+nnoremap <leader>v V`]
+
+" highlight last-inserted text
+nnoremap gV `[v`]
 
 "----------"
 "-- MISC --"
