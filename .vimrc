@@ -116,6 +116,11 @@ inoremap kj <ESC>
 vnoremap [ <gv
 vnoremap ] >gv
 
+" adjust indent of pasted text to match its context
+"//.future: context-awareness. remove leader requirement. if pasting a full line, do the special paste. if not, just do the normal paste.
+nnoremap <leader>p p=']
+nnoremap <leader>P P=']
+
 " maintain clipboard after pasting over something in visual mode
 xnoremap p "_dP
 
@@ -124,6 +129,11 @@ nnoremap <leader>v V`]
 
 " highlight last-inserted text
 nnoremap gV `[v`]
+
+" open a new line but stay in normal mode on the current line
+nnoremap oo o<esc>k
+nnoremap OO O<esc>j
+
 
 "----------"
 "-- MISC --"
