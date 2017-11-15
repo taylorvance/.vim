@@ -107,6 +107,11 @@ set autoindent							" copy the current line's indent when starting a new one
 set backspace=indent,eol,start			" allow backspacing over autoindent, line breaks, and the start of insert
 set runtimepath+=~/.vim/my-snippets/	" make sure vim sees my custom snippets
 
+" hit j and k (order doesn't matter) to escape insert mode
+" note: we can't disable esc (by mapping to <nop>) because it causes problems
+inoremap jk <ESC>
+inoremap kj <ESC>
+
 " stay in visual mode after left or right shift
 vnoremap [ <gv
 vnoremap ] >gv
@@ -138,9 +143,6 @@ noh
 
 " save a keystroke (shift) with every command (save, quit, etc)
 nnoremap ; :
-
-" use jj to quickly get out of insert mode
-inoremap jj <ESC>
 
 " NERDTree shortcut
 nnoremap <leader>n :NERDTreeToggle<CR>
