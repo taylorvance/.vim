@@ -14,9 +14,7 @@ let mapleader=","			" easier than backslash
 set encoding=utf-8
 
 
-"--------"
-"-- UI --"
-"--------"
+" -- UI -- {{{
 
 set background=dark			" use dark background (duh)
 colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
@@ -45,6 +43,11 @@ set foldnestmax=10			" don't let us fold too many folds
 set foldmethod=indent		" fold based on indent level
 " toggle fold with space
 nnoremap <space> za
+" fold by marker for vim files
+augroup filetype_vim
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker
+augroup END
 
 " toggle background dark/light
 map <leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
@@ -53,10 +56,10 @@ map <leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
 set listchars=tab:▸\ ,eol:¬
 nnoremap <leader>l :set list!<CR>
 
+" }}}
 
-"------------"
-"-- SEARCH --"
-"------------"
+
+" -- SEARCH -- {{{
 
 set incsearch				" search as chars entered
 set hlsearch				" highlight matches
@@ -76,10 +79,10 @@ let g:ctrlp_prompt_mappings = {
 	\ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 	\ }
 
+" }}}
 
-"----------------"
-"-- NAVIGATION --"
-"----------------"
+
+" -- NAVIGATION -- {{{
 
 set scrolloff=3			" keep a 3-line padding above and below the cursor
 
@@ -98,10 +101,10 @@ nnoremap k gk
 nnoremap <tab> %
 vnoremap <tab> %
 
+" }}}
 
-"-------------"
-"-- EDITING --"
-"-------------"
+
+" -- EDITING -- {{{
 
 set autoindent							" copy the current line's indent when starting a new one
 set backspace=indent,eol,start			" allow backspacing over autoindent, line breaks, and the start of insert
@@ -135,9 +138,10 @@ nnoremap oo o<esc>k
 nnoremap OO O<esc>j
 
 
-"----------"
-"-- MISC --"
-"----------"
+" }}}
+
+
+" -- MISC -- {{{
 
 set hidden
 set ttyfast
@@ -158,6 +162,8 @@ nnoremap ; :
 nnoremap <leader>n :NERDTreeToggle<CR>
 " close vim if NERDTree is the only thing open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" }}}
 
 
 
