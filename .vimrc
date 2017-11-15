@@ -119,11 +119,6 @@ inoremap kj <ESC>
 vnoremap [ <gv
 vnoremap ] >gv
 
-" adjust indent of pasted text to match its context
-"//.future: context-awareness. remove leader requirement. if pasting a full line, do the special paste. if not, just do the normal paste.
-nnoremap <leader>p p=']
-nnoremap <leader>P P=']
-
 " maintain clipboard after pasting over something in visual mode
 xnoremap p "_dP
 
@@ -137,6 +132,26 @@ nnoremap gV `[v`]
 nnoremap oo o<esc>k
 nnoremap OO O<esc>j
 
+" If the unnamed register contains a newline, adjust indent of the pasted text to match the indent around it.
+" Else, do a normal paste.
+" (same for shift p)
+function! MyPaste(is_shift)
+	if matchstr(@", "\n") == "\n"
+		if a:is_shift
+			normal! P=']
+		else
+			normal! p=']
+		endif
+	else
+		if a:is_shift
+			normal! P
+		else
+			normal! p
+		endif
+	endif
+endfunction
+nnoremap p :call MyPaste(0)<cr>
+nnoremap P :call MyPaste(1)<cr>
 
 " }}}
 
