@@ -35,11 +35,12 @@ git submodule update
 * Relative line numbers
 * `<leader>` is comma
   * `<leader><space>` to clear highlighted search text
-* `jj` mapped to `<esc>` for quick escape
+  * `<leader>ev` and `<leader>sv` to edit and source .vimrc
+* `jk` and `kj` mapped to `<Esc>` for quick escape
 * `<C-l>` and `<C-h>` for quick tab traversal
-* `<tab>` goes to matching bracket pair
-* Maintain clipboard after pasting
-* Stay in Visual after tab shift
+* `<Tab>` goes to matching bracket pair
+* Maintain clipboard after pasting in Visual
+* Stay in Visual after left/right shift
 * Mouse and system clipboard support
 * Git submodules (plugins) managed by Pathogen
   * [UltiSnips](https://github.com/SirVer/ultisnips.git) with [vim-snippets](https://github.com/honza/vim-snippets.git)
