@@ -134,24 +134,17 @@ nnoremap OO O<esc>j
 
 " If the unnamed register contains a newline, adjust indent of the pasted text to match the indent around it.
 " Else, do a normal paste.
-" (same for shift p)
-function! MyPaste(is_shift)
-	if matchstr(@", "\n") == "\n"
-		if a:is_shift
-			normal! P=']
+function! MyPaste(char)
+	if a:char ==? "p"
+		if matchstr(@", "\n") == "\n"
+			execute "normal! " . a:char . "=']"
 		else
-			normal! p=']
-		endif
-	else
-		if a:is_shift
-			normal! P
-		else
-			normal! p
+			execute "normal! " . a:char
 		endif
 	endif
 endfunction
-nnoremap p :call MyPaste(0)<cr>
-nnoremap P :call MyPaste(1)<cr>
+nnoremap p :call MyPaste("p")<cr>
+nnoremap P :call MyPaste("P")<cr>
 
 " }}}
 
