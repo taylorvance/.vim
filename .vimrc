@@ -71,7 +71,7 @@ set ignorecase smartcase	" if search string is all lc, ignore case. else, case-s
 " quickly clear highlighted search terms
 nnoremap <leader><space> :noh<cr>
 
-" search by plain text (only \ has special meaning) (very nomagic)
+" search by plain text (very nomagic: only \ has special meaning)
 nnoremap / /\V
 
 " open CtrlP files in new tab by default
@@ -94,7 +94,7 @@ nnoremap <C-h> gT
 nnoremap gt <nop>
 nnoremap gT <nop>
 
-" move cursor by display lines (helps when a line is wrapped)
+" move cursor by display lines (helps when a line is visually wrapped)
 nnoremap j gj
 nnoremap k gk
 
@@ -129,9 +129,9 @@ nnoremap <leader>v V`]
 " highlight last-inserted text
 nnoremap gV `[v`]
 
-" open a new line but stay in normal mode on the current line
-nnoremap <leader>o o<esc>k
-nnoremap <leader>O O<esc>j
+" open a new line but stay in normal mode at the beginning of the current line
+nnoremap <leader>o o<esc>-
+nnoremap <leader>O O<esc>+
 
 " If the unnamed register contains a newline, adjust indent of the pasted text to match the indent around it.
 " Else, do a normal paste.
@@ -144,8 +144,8 @@ function! MyPaste(char)
 		endif
 	endif
 endfunction
-nnoremap p :call MyPaste("p")<cr>
-nnoremap P :call MyPaste("P")<cr>
+nnoremap <leader>p :call MyPaste("p")<cr>
+nnoremap <leader>P :call MyPaste("P")<cr>
 
 " }}}
 
