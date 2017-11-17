@@ -27,6 +27,7 @@ set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
 set wrap					" visually wrap a line if it's wider than the window
+set textwidth=0				" don't automatically insert an actual <EOL> as I type a long line
 set linebreak				" don't break words when wrapping
 set visualbell				" don't beep
 set lazyredraw				" prevents redraw when executing macros, registers, and non-typed commands
