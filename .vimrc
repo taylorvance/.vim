@@ -102,6 +102,10 @@ nnoremap k gk
 nnoremap <tab> %
 vnoremap <tab> %
 
+" go to beginning/end of line rather than the window (horizonal rather than vertical)
+nnoremap H ^
+nnoremap L $
+
 " }}}
 
 
