@@ -165,11 +165,19 @@ set gdefault
 " quickly edit and load vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
-" clear the highlight when it's reloaded
+" automatically source vimrc when it's saved
+augroup save_vimrc
+	autocmd!
+	autocmd BufWritePost .vimrc source $MYVIMRC
+augroup END
+" clear the highlight when vimrc is reloaded
 noh
 
 " save a keystroke (shift) with every command (save, quit, etc)
 nnoremap ; :
+
+" make help docs open in vertical split
+cnoreabbrev H vertical help
 
 " NERDTree shortcut
 nnoremap <leader>n :NERDTreeToggle<CR>
