@@ -80,6 +80,11 @@ let g:ctrlp_prompt_mappings = {
 	\ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 	\ }
 
+" CtrlP should ignore certain directories
+let g:ctrlp_custom_ignore = {
+	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$'
+	\ }
+
 " }}}
 
 
