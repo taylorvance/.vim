@@ -57,6 +57,9 @@ map <leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
 set listchars=tab:▸\ ,eol:¬
 nnoremap <leader>l :set list!<CR>
 
+" turn off number and gitgutter columns (useful for copying text to paste)
+nnoremap <leader>nn :set nonumber norelativenumber<CR>:GitGutterDisable<CR>
+
 " }}}
 
 
@@ -139,7 +142,7 @@ xnoremap p "_dP
 nnoremap <leader>v V`]
 
 " highlight last-inserted text
-nnoremap gV `[v`]
+nnoremap <leader>V `[v`]
 
 " open a new line but stay in normal mode at the beginning of the current line
 nnoremap <leader>o o<esc>-
