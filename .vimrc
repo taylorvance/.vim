@@ -85,6 +85,9 @@ let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$'
 	\ }
 
+" cache CtrlP
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
+
 " }}}
 
 
@@ -155,6 +158,12 @@ function! MyPaste(char)
 endfunction
 nnoremap <leader>p :call MyPaste("p")<cr>
 nnoremap <leader>P :call MyPaste("P")<cr>
+
+" quickly begin todo comment
+inoremap <leader>td //TODO: 
+
+" insert current datetime
+inoremap <leader>dt <C-r>=strftime("\%Y-\%m-\%d \%H:\%M:\%S")<C-m>
 
 " }}}
 
