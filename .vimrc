@@ -106,7 +106,7 @@ nnoremap gT <nop>
 nnoremap j gj
 nnoremap k gk
 
-" use tab instead of % to move to matching bracket pair
+" use tab instead of % to move to matching bracket
 nnoremap <tab> %
 vnoremap <tab> %
 
