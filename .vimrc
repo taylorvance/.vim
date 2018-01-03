@@ -1,5 +1,6 @@
 " Taylor Vance
 
+
 set nocompatible	" no vi compatibility
 set modelines=0		" prevents some security exploits
 
@@ -54,7 +55,7 @@ augroup END
 map <leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
 
 " show invisible chars
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,trail:•,eol:¬
 nnoremap <leader>l :set list!<CR>
 
 " turn off number and gitgutter columns (useful for copying text to paste)
