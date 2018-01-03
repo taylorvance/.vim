@@ -136,6 +136,9 @@ inoremap kj <ESC>
 vnoremap [ <gv
 vnoremap ] >gv
 
+" make Y behave like C and D (yank from cursor to EOL)
+nnoremap Y y$
+
 " maintain clipboard after pasting over something in visual mode
 xnoremap p "_dP
 
