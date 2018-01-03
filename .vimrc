@@ -169,8 +169,13 @@ nnoremap <leader>P :call MyPaste("P")<cr>
 " quickly begin todo comment
 inoremap <leader>td //TODO: 
 
-" insert current datetime
-inoremap <leader>dt <C-r>=strftime("\%Y-\%m-\%d \%H:\%M:\%S")<C-m>
+" insert current datetime in format: Y-m-d H:M:S
+inoremap <leader>dt <C-r>=strftime("\%F \%T")<C-m>
+
+" better line joins
+if v:version > 703 || v:version == 703 && has('patch541')
+	set formatoptions+=j
+endif
 
 " }}}
 
