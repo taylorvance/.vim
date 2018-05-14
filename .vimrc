@@ -208,8 +208,10 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " make gitgutter less of a resource hog
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
+"let g:gitgutter_realtime = 0
+"let g:gitgutter_eager = 0
+" ignore whitespace changes
+let g:gitgutter_diff_args = '-w'
 
 " }}}
 
