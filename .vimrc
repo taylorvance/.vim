@@ -166,9 +166,6 @@ endfunction
 nnoremap <leader>p :call MyPaste("p")<cr>
 nnoremap <leader>P :call MyPaste("P")<cr>
 
-" quickly begin todo comment
-inoremap <leader>td //TODO: 
-
 " insert current datetime in format: Y-m-d H:M:S
 inoremap <leader>dt <C-r>=strftime("\%F \%T")<C-m>
 
