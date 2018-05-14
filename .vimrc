@@ -149,8 +149,8 @@ nnoremap <leader>v V`]
 nnoremap <leader>V `[v`]
 
 " open a new line but stay in normal mode at the beginning of the current line
-nnoremap <leader>o o<esc>-
-nnoremap <leader>O O<esc>+
+nnoremap <leader>o m`o<esc>S<esc>``
+nnoremap <leader>O m`O<esc>S<esc>``
 
 " If the unnamed register contains a newline, adjust indent of the pasted text to match the indent around it.
 " Else, do a normal paste.
