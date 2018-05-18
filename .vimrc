@@ -112,6 +112,10 @@ vnoremap <tab> %
 nnoremap H ^
 nnoremap L $
 
+" jump to git changes
+nnoremap <up> :GitGutterPrevHunk<cr>
+nnoremap <down> :GitGutterNextHunk<cr>
+
 " }}}
 
 
