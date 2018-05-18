@@ -45,7 +45,6 @@ git submodule update
 * Git submodules (plugins) managed by Pathogen
   * [UltiSnips](https://github.com/SirVer/ultisnips.git) with [vim-snippets](https://github.com/honza/vim-snippets.git)
   * [CtrlP](https://github.com/ctrlpvim/ctrlp.vim.git)
-  * [NERDTree](https://github.com/scrooloose/nerdtree.git)
   * [NERDCommenter](https://github.com/scrooloose/nerdcommenter.git)
   * [Surround](https://github.com/tpope/vim-surround.git)
   * [vim-gitgutter](https://github.com/airblade/vim-gitgutter.git)
