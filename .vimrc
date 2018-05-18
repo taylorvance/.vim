@@ -22,8 +22,6 @@ set background=dark			" use dark background (duh)
 set number					" show line number of current line...
 set relativenumber			" ...and relative line number of other lines
 set cursorline				" highlight current line
-set laststatus=2			" always show the status line
-set ruler					" show cursor's line and column number
 set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
@@ -34,6 +32,26 @@ set visualbell				" don't beep
 set lazyredraw				" prevents redraw for macros, registers, and non-typed cmds
 set mouse=a					" enable mouse in all modes
 set clipboard=unnamedplus	" use the system clipboard
+
+" << STATUSLINE >> {{{
+set laststatus=2				" always show the status line
+set statusline=					" make my own statusline
+set statusline+=%1*\ %y%*		" file type
+set statusline+=%2*\ \ %f%*		" relative filepath
+set statusline+=%3*\ \ %m%*		" modified flag
+set statusline+=%4*%=%*			" switch to right side
+set statusline+=%5*[%c,%v]%*	" col num and virtual col num
+set statusline+=%6*\ \ %l/%L%*	" line num and total lines
+set statusline+=%7*\ (%p%%)%*	" percentage through file
+" statusline coloring
+highlight User1 ctermbg=0 ctermfg=8
+highlight User2 ctermbg=0 ctermfg=7
+highlight User3 ctermbg=0 ctermfg=9 cterm=bold
+highlight User4 ctermbg=0
+highlight User5 ctermbg=0 ctermfg=12
+highlight User6 ctermbg=0 ctermfg=7
+highlight User7 ctermbg=0 ctermfg=8
+" }}}
 
 " tabs are 4 columns wide, each indentation level is one tab
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
@@ -63,14 +81,13 @@ nnoremap <leader>nn :set nonumber norelativenumber<cr>:GitGutterDisable<cr>
 
 " << SEARCH >> {{{
 
-set incsearch				" search as chars entered
-set hlsearch				" highlight matches
+set incsearch				" search as chars are entered
 set wildmenu				" enhance cmd-line completion
 set wildmode=list:longest	" list all matching and complete til longest common string
 set ignorecase smartcase	" if search string is all lc, ignore case. else, case-sensitive.
 
 " quickly clear highlighted search terms
-nnoremap <leader><space> :nohlsearch<cr>
+nnoremap <leader><space> :noh<cr>
 
 " search by plain text (very nomagic: only \ has special meaning)
 nnoremap / /\V
