@@ -10,28 +10,28 @@ filetype plugin indent on
 
 syntax on
 
-let mapleader=","			" easier than backslash
+let mapleader=","
 
 set encoding=utf-8
 
 
-" -- UI -- {{{
+" << UI >> {{{
 
-set background=dark			" use dark background (duh)
 colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
-set number					" precede each line with its line number
-set relativenumber			" for each line except current, show number relative to current line
+set background=dark			" use dark background (duh)
+set number					" show line number of current line...
+set relativenumber			" ...and relative line number of other lines
 set cursorline				" highlight current line
-set ruler					" show cursor's line and column number
 set laststatus=2			" always show the status line
+set ruler					" show cursor's line and column number
 set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
 set wrap					" visually wrap a line if it's wider than the window
-set textwidth=0				" don't automatically insert an actual <EOL> as I type a long line
+set textwidth=0				" don't insert an actual <EOL> as I'm typing a long line
 set linebreak				" don't break words when wrapping
 set visualbell				" don't beep
-set lazyredraw				" prevents redraw when executing macros, registers, and non-typed commands
+set lazyredraw				" prevents redraw for macros, registers, and non-typed cmds
 set mouse=a					" enable mouse in all modes
 set clipboard=unnamedplus	" use the system clipboard
 
@@ -40,8 +40,8 @@ set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 " folding
 set foldenable				" enable folding
-set foldlevelstart=10		" fold very nested indents (10 deep) by default
-set foldnestmax=10			" don't let us fold too many folds
+set foldlevelstart=10		" fold very nested indents by default
+set foldnestmax=5			" don't let us fold too many folds
 set foldmethod=indent		" fold based on indent level
 " toggle fold with space
 nnoremap <space> za
@@ -51,29 +51,26 @@ augroup filetype_vim
 	autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-" toggle background dark/light
-map <leader>bg :let &background = (&background=="dark" ? "light" : "dark")<CR>
-
 " show invisible chars
 set listchars=tab:▸\ ,trail:•,eol:¬
-nnoremap <leader>l :set list!<CR>
+nnoremap <leader>l :set list!<cr>
 
 " turn off number and gitgutter columns (useful for copying text to paste)
-nnoremap <leader>nn :set nonumber norelativenumber<CR>:GitGutterDisable<CR>
+nnoremap <leader>nn :set nonumber norelativenumber<cr>:GitGutterDisable<cr>
 
 " }}}
 
 
-" -- SEARCH -- {{{
+" << SEARCH >> {{{
 
 set incsearch				" search as chars entered
 set hlsearch				" highlight matches
-set wildmenu				" enhance command-line completion
+set wildmenu				" enhance cmd-line completion
 set wildmode=list:longest	" list all matching and complete til longest common string
 set ignorecase smartcase	" if search string is all lc, ignore case. else, case-sensitive.
 
 " quickly clear highlighted search terms
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader><space> :nohlsearch<cr>
 
 " search by plain text (very nomagic: only \ has special meaning)
 nnoremap / /\V
@@ -95,16 +92,13 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 " }}}
 
 
-" -- NAVIGATION -- {{{
+" << NAVIGATION >> {{{
 
 set scrolloff=3			" keep a 3-line padding above and below the cursor
 
 " quicker tab traversal
 nnoremap <C-l> gt
 nnoremap <C-h> gT
-" disable old way to break the habit
-nnoremap gt <nop>
-nnoremap gT <nop>
 
 " move cursor by display lines (helps when a line is visually wrapped)
 nnoremap j gj
@@ -121,14 +115,15 @@ nnoremap L $
 " }}}
 
 
-" -- EDITING -- {{{
+" << EDITING >> {{{
 
-set autoindent							" copy the current line's indent when starting a new one
-set backspace=indent,eol,start			" allow backspacing over autoindent, line breaks, and the start of insert
+set autoindent							" use the current line's indent
+set backspace=indent,eol,start			" allow backspacing
 set runtimepath+=~/.vim/my-snippets/	" make sure vim sees my custom snippets
 
+nnoremap <leader>w :w<cr>
+
 " hit j and k (order doesn't matter) to escape insert mode
-" note: we can't disable esc (by mapping to <nop>) because it causes problems
 inoremap jk <ESC>
 inoremap kj <ESC>
 
@@ -144,11 +139,10 @@ xnoremap p "_dP
 
 " highlight last-pasted text
 nnoremap <leader>v V`]
-
 " highlight last-inserted text
 nnoremap <leader>V `[v`]
 
-" open a new line but stay in normal mode at the beginning of the current line
+" open a new line but stay in normal mode at current position
 nnoremap <leader>o m`o<esc>S<esc>``
 nnoremap <leader>O m`O<esc>S<esc>``
 
@@ -166,8 +160,8 @@ endfunction
 nnoremap <leader>p :call MyPaste("p")<cr>
 nnoremap <leader>P :call MyPaste("P")<cr>
 
-" insert current datetime in format: Y-m-d H:M:S
-inoremap <leader>dt <C-r>=strftime("\%F \%T")<C-m>
+" insert current datetime in ISO format
+inoremap <leader>dt <C-r>=strftime('%Y-%m-%d %H:%M:%S')<C-m>
 
 " better line joins
 if v:version > 703 || v:version == 703 && has('patch541')
@@ -177,24 +171,16 @@ endif
 " }}}
 
 
-" -- MISC -- {{{
+" << MISC >> {{{
 
-set hidden
-set ttyfast
-set undofile
-set history=1000
-set gdefault
+set hidden			" a buffer becomes hidden when it's abandoned (w/e that means)
+set ttyfast			" indicates fast terminal connection
+set undofile		" persistent undo tree
+set history=1000	" cmd-line history
 
-" quickly edit and load vimrc
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-" automatically source vimrc when it's saved
-augroup save_vimrc
-	autocmd!
-	autocmd BufWritePost .vimrc source $MYVIMRC
-augroup END
-" clear the highlight when vimrc is reloaded
-noh
+" quickly edit and source vimrc
+nnoremap <leader>ev :vsp $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " save a keystroke (shift) with every command (save, quit, etc)
 nnoremap ; :
@@ -209,9 +195,3 @@ cnoreabbrev H vertical help
 let g:gitgutter_diff_args = '-w'
 
 " }}}
-
-
-
-" stuff for DT...this should probably live somewhere else
-" Open current page in container 8
-command! C8 :tabedit scp://10.0.6.152//var/www/html/container_8/%:p:.
