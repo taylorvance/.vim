@@ -100,7 +100,7 @@ let g:ctrlp_prompt_mappings = {
 
 " CtrlP should ignore certain directories
 let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$'
+	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$\|glyphicons$'
 	\ }
 
 " cache CtrlP
@@ -143,6 +143,8 @@ set backspace=indent,eol,start			" allow backspacing
 set runtimepath+=~/.vim/my-snippets/	" make sure vim sees my custom snippets
 
 nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap <leader>wq :wq<cr>
 
 " hit j and k (order doesn't matter) to escape insert mode
 inoremap jk <ESC>
