@@ -202,11 +202,6 @@ nnoremap ; :
 " make help docs open in vertical split
 cnoreabbrev H vertical help
 
-" NERDTree shortcut
-nnoremap <leader>n :NERDTreeToggle<CR>
-" close vim if NERDTree is the only thing open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " make gitgutter less of a resource hog
 "let g:gitgutter_realtime = 0
 "let g:gitgutter_eager = 0
