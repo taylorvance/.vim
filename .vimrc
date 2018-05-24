@@ -35,12 +35,12 @@ set clipboard=unnamedplus	" use the system clipboard
 
 " << STATUSLINE >> {{{
 set laststatus=2				" always show the status line
-set statusline=					" make my own statusline
+set statusline=
 set statusline+=%1*\ %y%*		" file type
 set statusline+=%2*\ \ %f%*		" relative filepath
 set statusline+=%3*\ \ %m%*		" modified flag
 set statusline+=%4*%=%*			" switch to right side
-set statusline+=%5*[%c,%v]%*	" col num and virtual col num
+set statusline+=%5*%c%V%*		" col num and virtual col num
 set statusline+=%6*\ \ %l/%L%*	" line num and total lines
 set statusline+=%7*\ (%p%%)%*	" percentage through file
 " statusline coloring
@@ -73,8 +73,20 @@ augroup END
 set listchars=tab:▸\ ,trail:•,eol:¬
 nnoremap <leader>l :set list!<cr>
 
-" turn off number and gitgutter columns (useful for copying text to paste)
-nnoremap <leader>nn :set nonumber norelativenumber<cr>:GitGutterDisable<cr>
+
+" toggle number and gitgutter columns (useful for copying text to paste)
+nnoremap <leader>nn :call ToggleGutter()<cr>
+" if any of the gutter options are enabled, disables all of them
+" else, enables all of them
+function! ToggleGutter()
+	if &number || &relativenumber || g:gitgutter_enabled
+		set nonumber norelativenumber
+		:GitGutterDisable
+	else
+		set number relativenumber
+		:GitGutterEnable
+	endif
+endfunction
 
 " }}}
 
@@ -144,7 +156,6 @@ set runtimepath+=~/.vim/my-snippets/	" make sure vim sees my custom snippets
 
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
-nnoremap <leader>wq :wq<cr>
 
 " hit j and k (order doesn't matter) to escape insert mode
 inoremap jk <ESC>
@@ -163,7 +174,7 @@ xnoremap p "_dP
 " highlight last-pasted text
 nnoremap <leader>v V`]
 " highlight last-inserted text
-nnoremap <leader>V `[v`]
+"nnoremap <leader>V `[v`]
 
 " open a new line but stay in normal mode at current position
 nnoremap <leader>o m`o<esc>S<esc>``
@@ -212,8 +223,8 @@ nnoremap ; :
 cnoreabbrev H vertical help
 
 " make gitgutter less of a resource hog
-"let g:gitgutter_realtime = 0
-"let g:gitgutter_eager = 0
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 " ignore whitespace changes
 let g:gitgutter_diff_args = '-w'
 
