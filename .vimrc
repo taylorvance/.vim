@@ -198,13 +198,17 @@ endfunction
 nnoremap <leader>p :call MyPaste("p")<cr>
 nnoremap <leader>P :call MyPaste("P")<cr>
 
-" insert current datetime in ISO format
-inoremap <leader>dt <C-r>=strftime('%Y-%m-%d %H:%M:%S')<C-m>
-
 " better line joins
 if v:version > 703 || v:version == 703 && has('patch541')
 	set formatoptions+=j
 endif
+
+" insert current datetime in ISO format
+inoremap <leader>t <c-r>=strftime('%Y-%m-%d %H:%M:%S')<c-m>
+
+" php imaps
+autocmd FileType php inoremap <buffer> <leader>d $
+autocmd FileType php inoremap <buffer> <leader>a =>
 
 " }}}
 
