@@ -21,7 +21,8 @@ colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
 set background=dark			" use dark background (duh)
 set number					" show line number of current line...
 set relativenumber			" ...and relative line number of other lines
-set cursorline				" highlight current line
+"set cursorline				" highlight current line
+set synmaxcol=500			" max column to syntax-highlight (for performance)
 set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
