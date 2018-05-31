@@ -26,14 +26,14 @@ set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
 set wrap					" visually wrap a line if it's wider than the window
-set textwidth=0				" don't insert an actual <EOL> as I'm typing a long line
 set linebreak				" don't break words when wrapping
-set visualbell				" don't beep
+set textwidth=0				" but don't insert an actual <EOL> as I'm typing a long line
+set visualbell				" no beep
 set lazyredraw				" prevents redraw for macros, registers, and non-typed cmds
 set mouse=a					" enable mouse in all modes
 set clipboard=unnamedplus	" use the system clipboard
 
-" << STATUSLINE >> {{{
+" < STATUSLINE > {{{
 set laststatus=2				" always show the status line
 set statusline=
 set statusline+=%1*\ %y%*		" file type
@@ -56,27 +56,29 @@ highlight User7 ctermbg=0 ctermfg=8
 " tabs are 4 columns wide, each indentation level is one tab
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
+" < FOLDING > {{{
 " folding
 set foldenable				" enable folding
 set foldlevelstart=10		" fold very nested indents by default
 set foldnestmax=5			" don't let us fold too many folds
 set foldmethod=indent		" fold based on indent level
-" toggle fold with space
-nnoremap <space> za
 " fold by marker for vim files
 augroup filetype_vim
 	autocmd!
 	autocmd FileType vim setlocal foldmethod=marker
 augroup END
+" toggle fold with space
+nnoremap <space> za
+" }}}
 
 " show invisible chars
-set listchars=tab:▸\ ,trail:•,eol:¬
-nnoremap <leader>l :set list!<cr>
+"set listchars=tab:▸\ ,trail:•,eol:¬
+"nnoremap <leader>l :set list!<cr>
 
-
+" < GITGUTTER > {{{
 " toggle number and gitgutter columns (useful for copying text to paste)
 nnoremap <leader>nn :call ToggleGutter()<cr>
-" if any of the gutter options are enabled, disables all of them
+" if any of the gutters are enabled, disables all of them
 " else, enables all of them
 function! ToggleGutter()
 	if &number || &relativenumber || g:gitgutter_enabled
@@ -87,6 +89,12 @@ function! ToggleGutter()
 		:GitGutterEnable
 	endif
 endfunction
+" ignore whitespace changes
+let g:gitgutter_diff_args = '-w'
+" make gitgutter less of a resource hog
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+" }}}
 
 " }}}
 
@@ -109,12 +117,10 @@ let g:ctrlp_prompt_mappings = {
 	\ 'AcceptSelection("e")': ['<c-t>'],
 	\ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 	\ }
-
 " CtrlP should ignore certain directories
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$\|glyphicons$'
 	\ }
-
 " cache CtrlP
 let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 
@@ -123,11 +129,11 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 
 " << NAVIGATION >> {{{
 
-set scrolloff=3			" keep a 3-line padding above and below the cursor
+set scrolloff=3			" keep a 3-line pad above and below the cursor
 
 " quicker tab traversal
-nnoremap <C-l> gt
-nnoremap <C-h> gT
+nnoremap <c-l> gt
+nnoremap <c-h> gT
 
 " move cursor by display lines (helps when a line is visually wrapped)
 nnoremap j gj
@@ -154,6 +160,7 @@ set autoindent							" use the current line's indent
 set backspace=indent,eol,start			" allow backspacing
 set runtimepath+=~/.vim/my-snippets/	" make sure vim sees my custom snippets
 
+" quick save/quit
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 
@@ -219,13 +226,7 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " save a keystroke (shift) with every command (save, quit, etc)
 nnoremap ; :
 
-" make help docs open in vertical split
+" open help docs in vertical split
 cnoreabbrev H vertical help
-
-" make gitgutter less of a resource hog
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-" ignore whitespace changes
-let g:gitgutter_diff_args = '-w'
 
 " }}}
