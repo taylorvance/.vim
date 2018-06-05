@@ -208,7 +208,8 @@ inoremap <leader>t <c-r>=strftime('%Y-%m-%d %H:%M:%S')<c-m>
 
 " php imaps
 autocmd FileType php inoremap <buffer> <leader>d $
-autocmd FileType php inoremap <buffer> <leader>a =>
+autocmd FileType php inoremap <buffer> <leader>a ->
+autocmd FileType php inoremap <buffer> <leader>aa =>
 
 " }}}
 
