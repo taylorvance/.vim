@@ -40,6 +40,8 @@ set statusline=
 set statusline+=%1*\ %y%*		" file type
 set statusline+=%2*\ \ %f%*		" relative filepath
 set statusline+=%3*\ \ %m%*		" modified flag
+"set statusline+=%{(synIDattr(synID(line("."),col("."),1),"name"))}
+set statusline+=%{SynGrp()}		" TEMP syntax group under cursor
 set statusline+=%4*%=%*			" switch to right side
 set statusline+=%5*%c%V%*		" col num and virtual col num
 set statusline+=%6*\ \ %l/%L%*	" line num and total lines
@@ -234,5 +236,16 @@ nnoremap ; :
 
 " open help docs in vertical split
 cnoreabbrev H vertical help
+
+" show highlight groups under cursor
+function! SynGrp()                                                            
+	let l:s = synID(line('.'), col('.'), 1)
+	"return synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
+	return "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">"
+		\ . " trans<" . synIDattr(synID(line("."),col("."),0),"name") . ">"
+		\ . " lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+endfunc
+" TEMP set colorscheme to mine
+nnoremap <leader>c :color colortv<cr>
 
 " }}}
