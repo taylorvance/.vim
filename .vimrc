@@ -110,6 +110,10 @@ set ignorecase smartcase	" if search string is all lc, ignore case. else, case-s
 " quickly clear highlighted search terms
 nnoremap <leader><space> :noh<cr>
 
+" n always goes forward, N always goes backward
+nnoremap <expr> n (v:searchforward ? 'n' : 'N')
+nnoremap <expr> N (v:searchforward ? 'N' : 'n')
+
 " search by plain text (very nomagic: only \ has special meaning)
 nnoremap / /\V
 
