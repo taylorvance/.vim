@@ -3,7 +3,6 @@
 " Last Change:	2018-06-15
 
 set background=dark
-
 hi clear
 if exists("syntax_on")
   syntax reset
@@ -11,30 +10,25 @@ endif
 
 let g:colors_name="colortv"
 
-hi Normal ctermfg=White ctermbg=Black
+" https://askubuntu.com/questions/821157/print-a-256-color-test-pattern-in-the-terminal
 
-hi Comment ctermfg=DarkGray
-hi Constant ctermfg=Red
-hi Identifier ctermfg=Blue
-hi Operator ctermfg=LightBlue
-hi PreProc ctermfg=Green
-hi Statement ctermfg=Yellow
-hi Type ctermfg=Yellow
+" White			255
+" LightGray		247
+" DarkGray		241
+" Black			232
 
-"NR-16	NR-8	COLOR NAME
-"0	    0	    Black
-"1	    4	    DarkBlue
-"2	    2	    DarkGreen
-"3	    6	    DarkCyan
-"4	    1	    DarkRed
-"5	    5	    DarkMagenta
-"6	    3	    Brown, DarkYellow
-"7	    7	    LightGray, LightGrey, Gray, Grey
-"8	    0*	    DarkGray, DarkGrey
-"9	    4*	    Blue, LightBlue
-"10	    2*	    Green, LightGreen
-"11	    6*	    Cyan, LightCyan
-"12	    1*	    Red, LightRed
-"13	    5*	    Magenta, LightMagenta
-"14	    3*	    Yellow, LightYellow
-"15	    7*	    White
+" Blue			39
+" Green			47
+" Purple		129
+" Red			160
+" Yellow		226
+
+hi Normal ctermfg=255 ctermbg=232
+
+hi Comment ctermfg=241
+hi Constant ctermfg=160
+hi Identifier ctermfg=39
+hi Operator ctermfg=247
+hi PreProc ctermfg=47
+hi Statement ctermfg=129
+hi Type ctermfg=226
