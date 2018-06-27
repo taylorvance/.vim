@@ -239,11 +239,14 @@ cnoreabbrev H vertical help
 
 " show highlight groups under cursor
 function! SynGrp()                                                            
-	let l:s = synID(line('.'), col('.'), 1)
-	"return synIDattr(l:s, 'name') . ' -> ' . synIDattr(synIDtrans(l:s), 'name')
-	return "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">"
-		\ . " trans<" . synIDattr(synID(line("."),col("."),0),"name") . ">"
-		\ . " lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+	let synid = synID(line("."), col("."), 1)
+	return "hi<" . synIDattr(synid,"name") . "> "
+		\ . "trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> "
+		\ . "lo<" . synIDattr(synIDtrans(synid),"name") . "> "
+		\ . "FG:" . synIDattr(synIDtrans(synid),"fg#")
+	"return "hi<" . synIDattr(synID(line("."),col("."),1),"name") . ">"
+		"\ . " trans<" . synIDattr(synID(line("."),col("."),0),"name") . ">"
+		"\ . " lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
 endfunc
 " TEMP set colorscheme to mine
 nnoremap <leader>c :color colortv<cr>
