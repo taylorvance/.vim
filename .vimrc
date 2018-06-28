@@ -117,17 +117,12 @@ nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 " search by plain text (very nomagic: only \ has special meaning)
 nnoremap / /\V
 
-" open CtrlP files in new tab by default
-let g:ctrlp_prompt_mappings = {
-	\ 'AcceptSelection("e")': ['<c-t>'],
-	\ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
-	\ }
+" cache CtrlP
+let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 " CtrlP should ignore certain directories
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$\|glyphicons$'
 	\ }
-" cache CtrlP
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 
 " }}}
 
@@ -136,13 +131,9 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 
 set scrolloff=3			" keep a 3-line pad above and below the cursor
 
-" quicker tab traversal
-nnoremap <c-l> gt
-nnoremap <c-h> gT
-
 " move cursor by display lines (helps when a line is visually wrapped)
-nnoremap j gj
 nnoremap k gk
+nnoremap j gj
 
 " use tab instead of % to move to matching bracket
 nnoremap <tab> %
@@ -151,6 +142,17 @@ vnoremap <tab> %
 " go to beginning/end of line rather than the window (horizonal rather than vertical)
 nnoremap H ^
 nnoremap L $
+
+" list buffers and prep to fly
+nnoremap gb :ls<cr>:b<space>
+" go to up/down/left/right window
+nnoremap <c-k> <c-w>k
+nnoremap <c-j> <c-w>j
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+" go to next/prev buffer
+nnoremap [b :bnext<cr>
+nnoremap ]b :bprev<cr>
 
 " }}}
 
