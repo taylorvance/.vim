@@ -235,6 +235,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap ; :
 
 " open help docs in vertical split
-cnoreabbrev H vertical help
+cnoreabbrev vh vert h
 
 " }}}
