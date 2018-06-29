@@ -247,7 +247,7 @@ cnoreabbrev vh vert h
 function! SynGrp()                                                            
 	let l:synid = synID(line("."), col("."), 1)
 	return "hi<" . synIDattr(l:synid,"name") . "> "
-		\ . "trans<" . synIDattr(l:synid(line("."),col("."),0),"name") . "> "
+		\ . "trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> "
 		\ . "lo<" . synIDattr(synIDtrans(l:synid),"name") . "> "
 		\ . "FG:" . synIDattr(synIDtrans(l:synid),"fg#")
 endfunc
