@@ -10,25 +10,111 @@ endif
 
 let g:colors_name="colortv"
 
-" https://askubuntu.com/questions/821157/print-a-256-color-test-pattern-in-the-terminal
 
-" White			255
-" LightGray		247
-" DarkGray		241
-" Black			232
+" Custom color names {{{
 
-" Blue			39
-" Green			47
-" Purple		129
-" Red			160
-" Yellow		226
+" Grays
+let s:black=232
+let s:verydarkgray=235
+let s:darkgray=239
+let s:gray=243
+let s:lightgray=247
+let s:verylightgray=251
+let s:white=255
+" Colors
+let s:red=196
+let s:orange=202
+let s:yellow=11
+let s:green=47
+let s:cyan=45
+let s:blue=33
+let s:lightblue=75
+let s:purple=129
+let s:pink=200
 
-hi Normal ctermfg=255 ctermbg=232
+" }}}
 
-hi Comment ctermfg=241
-hi Constant ctermfg=160
-hi Identifier ctermfg=39
-hi Operator ctermfg=247
-hi PreProc ctermfg=47
-hi Statement ctermfg=129
-hi Type ctermfg=226
+
+" Variables for categories of syntax groups
+let s:basecolor="blue"
+if s:basecolor ==? "blue"
+	let s:keywords=s:cyan
+	let s:variables=s:lightblue
+	let s:constants=s:blue
+	let s:control=s:yellow
+elseif s:basecolor ==? "purple"
+	let s:keywords=s:green
+	let s:variables=s:lightblue
+	let s:constants=s:purple
+	let s:control=s:pink
+endif
+
+
+" Grays
+exe 'hi Normal ctermfg='.s:white.' ctermbg='.s:black
+hi! link Operator Normal
+hi! link Special Normal
+hi! link Title Normal
+hi! link javaScriptBraces Normal
+hi! link cssBraces Normal
+exe 'hi Comment ctermfg='.s:gray
+exe 'hi Delimiter ctermfg='.s:lightgray
+exe 'hi Visual ctermfg='.s:black.' ctermbg='.s:white
+exe 'hi Folded ctermfg='.s:white.' ctermbg='.s:verydarkgray
+
+" Red
+exe 'hi Error ctermfg='.s:white.' ctermbg='.s:red
+exe 'hi ErrorMsg ctermfg='.s:white.' ctermbg='.s:red.' cterm=bold'
+
+" Orange
+exe 'hi Todo ctermfg='.s:white.' ctermbg='.s:orange
+
+" Yellow
+exe 'hi Statement ctermfg='.s:control
+exe 'hi Search ctermfg='.s:black.' ctermbg='.s:yellow
+exe 'hi IncSearch ctermfg='.s:black.' ctermbg='.s:yellow
+
+" Green
+
+" Blue
+exe 'hi Constant ctermfg='.s:constants
+exe 'hi Identifier ctermfg='.s:variables
+exe 'hi Type ctermfg='.s:keywords
+hi! link javaScriptIdentifier Type
+hi! link javaScriptFunction Type
+
+
+" GUI
+hi Cursor cterm=reverse
+hi CursorLine cterm=underline
+exe 'hi LineNr ctermfg='.s:gray
+hi! link CursorLineNr LineNr
+exe 'hi MatchParen ctermfg='.s:black.' ctermbg='.s:lightgray
+
+
+" Filetypes {{{
+
+" Vim
+exe 'hi vimMapLhs ctermfg='.s:lightgray
+exe 'hi vimMapRhs ctermfg='.s:verylightgray
+exe 'hi vimCommentTitle ctermfg='.s:lightgray
+
+" HTML
+exe 'hi htmlTag ctermfg='.s:lightgray
+hi! link htmlEndTag htmlTag
+hi! link htmlScriptTag htmlTag
+exe 'hi htmlArg ctermfg='.s:lightgray
+exe 'hi htmlTagName ctermfg='.s:keywords
+hi! link htmlSpecialTagName htmlTagName
+hi htmlBold cterm=bold
+hi htmlUnderline cterm=underline
+hi htmlItalic cterm=underline
+
+" PHP
+hi! link phpComparison Normal
+hi! link phpMemberSelector Normal
+hi! link phpVarSelector Identifier
+hi! link phpFunctions Type
+hi! link phpDefine Type
+
+" }}}

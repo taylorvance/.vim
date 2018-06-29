@@ -17,11 +17,12 @@ set encoding=utf-8
 
 " << UI >> {{{
 
-colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
+"colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
+colorscheme colortv			" use my custom colorscheme
 set background=dark			" use dark background (duh)
 set number					" show line number of current line...
 set relativenumber			" ...and relative line number of other lines
-"set cursorline				" highlight current line
+set cursorline				" highlight current line
 set synmaxcol=500			" max column to syntax-highlight (for performance)
 set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
@@ -104,6 +105,7 @@ let g:gitgutter_eager = 0
 
 " << SEARCH >> {{{
 
+set hlsearch				" highlight all search matches
 set incsearch				" search as chars are entered
 set wildmenu				" enhance cmd-line completion
 set wildmode=list:longest	" list all matching and complete til longest common string
@@ -239,13 +241,15 @@ nnoremap ; :
 " open help docs in vertical split
 cnoreabbrev vh vert h
 
+
+"COLORSCHEME TESTING
 " show highlight groups under cursor
 function! SynGrp()                                                            
-	let synid = synID(line("."), col("."), 1)
-	return "hi<" . synIDattr(synid,"name") . "> "
-		\ . "trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> "
-		\ . "lo<" . synIDattr(synIDtrans(synid),"name") . "> "
-		\ . "FG:" . synIDattr(synIDtrans(synid),"fg#")
+	let l:synid = synID(line("."), col("."), 1)
+	return "hi<" . synIDattr(l:synid,"name") . "> "
+		\ . "trans<" . synIDattr(l:synid(line("."),col("."),0),"name") . "> "
+		\ . "lo<" . synIDattr(synIDtrans(l:synid),"name") . "> "
+		\ . "FG:" . synIDattr(synIDtrans(l:synid),"fg#")
 endfunc
 " TEMP set colorscheme to mine
 nnoremap <leader>c :color colortv<cr>
