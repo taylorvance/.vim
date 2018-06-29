@@ -58,7 +58,6 @@ highlight User7 ctermbg=0 ctermfg=8
 set tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 
 " < FOLDING > {{{
-" folding
 set foldenable				" enable folding
 set foldlevelstart=10		" fold very nested indents by default
 set foldnestmax=5			" don't let us fold too many folds
@@ -145,14 +144,16 @@ nnoremap L $
 
 " list buffers and prep to fly
 nnoremap gb :ls<cr>:b<space>
-" go to up/down/left/right window
+" go to prev/next buffer
+nnoremap ]b :bprev<cr>
+nnoremap [b :bnext<cr>
+" go to buffer last seen in this window (aka alternate file)
+nnoremap <c-b> <c-^>
+" window navigation
 nnoremap <c-k> <c-w>k
 nnoremap <c-j> <c-w>j
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
-" go to next/prev buffer
-nnoremap [b :bnext<cr>
-nnoremap ]b :bprev<cr>
 
 " }}}
 
@@ -187,6 +188,7 @@ nnoremap <leader>v V`]
 "nnoremap <leader>V `[v`]
 
 " open a new line but stay in normal mode at current position
+"TODO: why is this clearing the default paste register?
 nnoremap <leader>o m`o<esc>S<esc>``
 nnoremap <leader>O m`O<esc>S<esc>``
 
