@@ -10,7 +10,7 @@ filetype plugin indent on
 
 syntax on
 
-let mapleader=","
+map <space> <leader>
 
 set encoding=utf-8
 
@@ -68,8 +68,8 @@ augroup filetype_vim
 	autocmd!
 	autocmd FileType vim setlocal foldmethod=marker
 augroup END
-" toggle fold with space
-nnoremap <space> za
+" toggle fold
+nnoremap <leader>f za
 " }}}
 
 " show invisible chars
@@ -210,7 +210,7 @@ if v:version > 703 || v:version == 703 && has('patch541')
 endif
 
 " insert current datetime in ISO format
-inoremap <leader>t <c-r>=strftime('%Y-%m-%d %H:%M:%S')<c-m>
+inoremap <c-t> <c-r>=strftime('%Y-%m-%d %H:%M:%S')<c-m>
 
 " php imaps
 autocmd FileType php inoremap <buffer> <leader>d $
@@ -230,9 +230,6 @@ set history=1000	" cmd-line history
 " quickly edit and source vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
-" save a keystroke (shift) with every command (save, quit, etc)
-nnoremap ; :
 
 " open help docs in vertical split
 cnoreabbrev vh vert h
