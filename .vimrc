@@ -215,6 +215,7 @@ endif
 inoremap <c-t> <c-r>=strftime('%Y-%m-%d %H:%M:%S')<c-m>
 
 " php imaps
+" TODO these aren't working since I changed to space leader
 autocmd FileType php inoremap <buffer> <leader>d $
 autocmd FileType php inoremap <buffer> <leader>a ->
 autocmd FileType php inoremap <buffer> <leader>A =>
@@ -224,10 +225,11 @@ autocmd FileType php inoremap <buffer> <leader>A =>
 
 " << MISC >> {{{
 
-set hidden			" a buffer becomes hidden when it's abandoned (w/e that means)
-set ttyfast			" indicates fast terminal connection
-set undofile		" persistent undo tree
-set history=1000	" cmd-line history
+set hidden								" hide buffers instead of closing them
+set ttyfast								" indicates fast terminal connection
+set undofile							" persistent undo tree
+set history=1000						" cmd-line history
+set directory^=$HOME/.vim/swapfiles//	" move swp files out of the working directory
 
 " quickly edit and source vimrc
 nnoremap <leader>ev :vsp $MYVIMRC<cr>
