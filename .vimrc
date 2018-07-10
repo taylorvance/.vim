@@ -101,13 +101,13 @@ let g:gitgutter_eager = 0
 
 " << SEARCH >> {{{
 
-set incsearch				" search as chars are entered
-set wildmenu				" enhance cmd-line completion
-set wildmode=list:longest	" list all matching and complete til longest common string
-set ignorecase smartcase	" if search string is all lc, ignore case. else, case-sensitive.
+set incsearch					" search as chars are entered
+set wildmenu					" enhance cmd-line completion
+set wildmode=list:longest,full	" list matches, tab-complete to longest common string, then tab through matches
+set ignorecase smartcase		" if search string is all lc, ignore case. else, case-sensitive.
 
 " quickly clear highlighted search terms
-nnoremap <leader><space> :noh<cr>
+nnoremap <silent> <leader><space> :noh<cr>
 
 " n always goes forward, N always goes backward
 nnoremap <expr> n (v:searchforward ? 'n' : 'N')
