@@ -62,13 +62,25 @@ set foldenable				" enable folding
 set foldlevelstart=10		" fold very nested indents by default
 set foldnestmax=5			" don't let us fold too many folds
 set foldmethod=indent		" fold based on indent level
-" fold by marker for vim files
-augroup filetype_vim
+" set foldmethod based on filetype
+function! FancyFold()
+	if &filetype=='vim'
+		setlocal foldmethod=marker
+	else
+		setlocal foldmethod=indent
+	endif
+endfunction
+augroup fancy_fold
 	autocmd!
-	autocmd FileType vim setlocal foldmethod=marker
+	" define filetype-based folds before the file is loaded
+	autocmd BufReadPre * :call FancyFold()
+	" change to manual fold mode after indent folds have been defined
+	autocmd BufWinEnter * setlocal foldmethod=manual
 augroup END
 " toggle fold
 nnoremap <leader>f za
+" fold visual selection
+vnoremap <leader>f zf
 " }}}
 
 " show invisible chars
