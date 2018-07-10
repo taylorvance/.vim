@@ -230,7 +230,7 @@ autocmd FileType php inoremap <buffer> <leader>A =>
 set hidden								" hide buffers instead of closing them
 set ttyfast								" indicates fast terminal connection
 set directory^=$HOME/.vim/swapfiles//	" keep swap files in a centralized location
-set undodir^=$HOME/.vim/undodir			" keep undo files in a centralized location
+set undodir^=$HOME/.vim/undodir//		" keep undo files in a centralized location
 set undofile							" persistent undo tree
 set history=1000						" cmd-line history
 
