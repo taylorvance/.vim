@@ -145,10 +145,12 @@ nnoremap L $
 " list buffers and prep to fly
 nnoremap gb :ls<cr>:b<space>
 " go to prev/next buffer
-nnoremap ]b :bprev<cr>
-nnoremap [b :bnext<cr>
+nnoremap [b :bprev<cr>
+nnoremap ]b :bnext<cr>
 " go to buffer last seen in this window (aka alternate file)
 nnoremap <c-b> <c-^>
+" unload current buffer
+nnoremap <leader>bd :bd<cr>
 " window navigation
 nnoremap <c-k> <c-w>k
 nnoremap <c-j> <c-w>j
