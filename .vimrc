@@ -136,7 +136,6 @@ nnoremap j gj
 
 " use tab instead of % to move to matching bracket
 nnoremap <tab> %
-vnoremap <tab> %
 
 " go to beginning/end of line rather than the window (horizonal rather than vertical)
 nnoremap H ^
@@ -218,9 +217,15 @@ inoremap <c-t> <c-r>=strftime('%Y-%m-%d %H:%M:%S')<c-m>
 
 " php imaps
 " TODO these aren't working since I changed to space leader
-autocmd FileType php inoremap <buffer> <leader>d $
-autocmd FileType php inoremap <buffer> <leader>a ->
-autocmd FileType php inoremap <buffer> <leader>A =>
+"autocmd FileType php inoremap <buffer> <leader>d $
+"autocmd FileType php inoremap <buffer> <leader>a ->
+"autocmd FileType php inoremap <buffer> <leader>A =>
+
+" reformat associative php array
+" expand into multiple lines
+":'<,'>s/\[/\[\r/|s/=>/ => /g|s/, /,\r/g|s/\]/,\r\]/
+" collapse into one line
+":'<,'>s/\n\s*/ /g|s/ => /=>/g|s/, \]/\]/g
 
 " }}}
 
