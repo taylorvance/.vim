@@ -117,14 +117,8 @@ nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 " search by plain text (very nomagic: only \ has special meaning)
 nnoremap / /\V
 
-" cache CtrlP
-let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
-" CtrlP should ignore certain directories
-let g:ctrlp_custom_ignore = {
-	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$\|glyphicons$'
-	\ }
-
 " fzf
+nnoremap <c-p> :FZF<cr>
 set rtp+=~/.vim/bundle/fzf
 
 " }}}
