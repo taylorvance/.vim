@@ -32,6 +32,7 @@ fzf requires additional installation.
 
 ```
 ~/.vim/bundle/fzf/install
+PATH=$PATH:~/.vim/bundle/fzf/bin/fzf
 ```
 
 
