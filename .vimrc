@@ -125,7 +125,7 @@ let g:ctrlp_custom_ignore = {
 	\ }
 
 " fzf
-set rtp+=~/.fzf
+set rtp+=~/.vim/bundle/fzf
 
 " }}}
 
