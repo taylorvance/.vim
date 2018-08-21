@@ -20,12 +20,18 @@ Next, create a symlink to .vimrc in `~`.
 ln -s ~/.vim/.vimrc ~/.vimrc
 ```
 
-Finally, download the plugins.
+Now download the plugins.
 
 ```
 cd ~/.vim/
 git submodule init
 git submodule update
+```
+
+fzf requires additional installation.
+
+```
+~/.vim/bundle/fzf/install
 ```
 
 
