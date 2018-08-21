@@ -118,8 +118,9 @@ nnoremap <expr> N (v:searchforward ? 'N' : 'n')
 nnoremap / /\V
 
 " fzf
-nnoremap <c-p> :FZF<cr>
 set rtp+=~/.vim/bundle/fzf
+nnoremap <c-f> :GFiles<cr>
+nnoremap gb :Buffers<cr>
 
 " }}}
 
@@ -139,8 +140,6 @@ nnoremap <tab> %
 nnoremap H ^
 nnoremap L $
 
-" list buffers and prep to fly
-nnoremap gb :ls<cr>:b<space>
 " go to prev/next buffer
 nnoremap [b :bprev<cr>
 nnoremap ]b :bnext<cr>
