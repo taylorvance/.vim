@@ -101,10 +101,11 @@ let g:gitgutter_eager = 0
 
 " << SEARCH >> {{{
 
-set incsearch					" search as chars are entered
-set wildmenu					" enhance cmd-line completion
-set wildmode=list:longest,full	" list matches, tab-complete to longest common string, then tab through matches
-set ignorecase smartcase		" if search string is all lc, ignore case. else, case-sensitive.
+set incsearch						" search as chars are entered
+set ignorecase smartcase			" if search string is all lc, ignore case. else, case-sensitive.
+set wildmenu						" enhance cmd-line completion
+set wildmode=list:longest,full		" list matches, tab-complete to longest common string, then tab through matches
+set wildignore+=*/node_modules/*,*/vendor/*
 
 " quickly clear highlighted search terms
 nnoremap <silent> <leader><space> :noh<cr>
@@ -122,6 +123,9 @@ let g:ctrlp_cache_dir = $HOME.'/.cache/ctrlp'
 let g:ctrlp_custom_ignore = {
 	\ 'dir': '\.git$\|\.svn$\|bower_components$\|node_modules$\|vendor$\|glyphicons$'
 	\ }
+
+" fzf
+set rtp+=~/.fzf
 
 " }}}
 
@@ -240,7 +244,7 @@ set undofile							" persistent undo tree
 set history=1000						" cmd-line history
 
 " quickly edit and source vimrc
-nnoremap <leader>ev :vsp $MYVIMRC<cr>
+nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " open help docs in vertical split
