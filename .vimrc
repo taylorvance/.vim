@@ -119,8 +119,9 @@ nnoremap / /\V
 
 " fzf
 set rtp+=~/.vim/bundle/fzf
-nnoremap <c-f> :GFiles<cr>
+nnoremap <c-t> :GFiles<cr>
 nnoremap gb :Buffers<cr>
+nnoremap <c-f> :Lines<cr>
 
 " }}}
 
