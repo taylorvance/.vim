@@ -120,6 +120,8 @@ nnoremap / /\V
 " fzf
 set rtp+=~/.vim/bundle/fzf
 nnoremap <c-t> :GFiles<cr>
+" if in git repo, search git files; else, all files
+nnoremap <c-t> :execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'<cr>
 nnoremap gb :Buffers<cr>
 nnoremap <c-f> :Lines<cr>
 
