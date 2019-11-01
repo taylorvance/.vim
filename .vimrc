@@ -27,8 +27,8 @@ set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
 set wrap					" visually wrap a line if it's wider than the window
-set linebreak				" don't break words when wrapping
 set textwidth=0				" but don't insert an actual <EOL> as I'm typing a long line
+set linebreak				" don't break words when wrapping
 set visualbell				" no beep
 set lazyredraw				" prevents redraw for macros, registers, and non-typed cmds
 set mouse=a					" enable mouse in all modes
@@ -119,10 +119,9 @@ nnoremap / /\V
 
 " fzf
 set rtp+=~/.vim/bundle/fzf
-nnoremap <c-t> :GFiles<cr>
 " if in git repo, search git files; else, all files
 nnoremap <c-t> :execute system('git rev-parse --is-inside-work-tree') =~ 'true' ? 'GFiles' : 'Files'<cr>
-nnoremap gb :Buffers<cr>
+" find text in open files
 nnoremap <c-f> :Lines<cr>
 
 " }}}
@@ -132,29 +131,27 @@ nnoremap <c-f> :Lines<cr>
 
 set scrolloff=3			" keep a 3-line pad above and below the cursor
 
+" use j and k to scroll jump
+nnoremap <c-k> <c-u>
+nnoremap <c-j> <c-d>
+
 " move cursor by display lines (helps when a line is visually wrapped)
 nnoremap k gk
 nnoremap j gj
-
-" use tab instead of % to move to matching bracket
-nnoremap <tab> %
 
 " go to beginning/end of line rather than the window (horizonal rather than vertical)
 nnoremap H ^
 nnoremap L $
 
-" go to prev/next buffer
-nnoremap [b :bprev<cr>
-nnoremap ]b :bnext<cr>
+" use tab to move to matching bracket
+nnoremap <tab> %
+
 " go to buffer last seen in this window (aka alternate file)
 nnoremap <c-b> <c-^>
+" list buffers
+nnoremap gb :Buffers<cr>
 " unload current buffer
 nnoremap <leader>bd :bd<cr>
-" window navigation
-nnoremap <c-k> <c-w>k
-nnoremap <c-j> <c-w>j
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
 
 " }}}
 
