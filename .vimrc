@@ -131,9 +131,9 @@ nnoremap <c-f> :Lines<cr>
 
 set scrolloff=3			" keep a 3-line pad above and below the cursor
 
-" use j and k to scroll jump
-nnoremap <c-k> <c-u>
-nnoremap <c-j> <c-d>
+" use j and k to scroll jump (and also center vertically)
+nnoremap <c-k> <c-u>zz
+nnoremap <c-j> <c-d>zz
 
 " move cursor by display lines (helps when a line is visually wrapped)
 nnoremap k gk
