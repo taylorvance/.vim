@@ -37,21 +37,19 @@ set clipboard=unnamedplus	" use the system clipboard
 " < STATUSLINE > {{{
 set laststatus=2				" always show the status line
 set statusline=
-set statusline+=%1*\ %y%*		" file type
-set statusline+=%2*\ \ %f%*		" relative filepath
-set statusline+=%3*\ \ %m%*		" modified flag
-set statusline+=%4*%=%*			" switch to right side
-set statusline+=%5*%c%V%*		" col num and virtual col num
-set statusline+=%6*\ \ %l/%L%*	" line num and total lines
-set statusline+=%7*\ (%p%%)%*	" percentage through file
+set statusline+=%1*\ \ %f%*		" relative filepath
+set statusline+=%2*\ \ %m%*		" modified flag
+set statusline+=%3*%=%*			" switch to right side
+set statusline+=%4*%c%V%*		" col num and virtual col num
+set statusline+=%5*\ \ %l/%L%*	" line num and total lines
+set statusline+=%6*\ (%p%%)%*	" percentage through file
 " statusline coloring
-highlight User1 ctermbg=0 ctermfg=8
-highlight User2 ctermbg=0 ctermfg=7
-highlight User3 ctermbg=0 ctermfg=9 cterm=bold
-highlight User4 ctermbg=0
-highlight User5 ctermbg=0 ctermfg=12
-highlight User6 ctermbg=0 ctermfg=7
-highlight User7 ctermbg=0 ctermfg=8
+highlight User1 ctermbg=0 ctermfg=7
+highlight User2 ctermbg=0 ctermfg=9 cterm=bold
+highlight User3 ctermbg=0
+highlight User4 ctermbg=0 ctermfg=12
+highlight User5 ctermbg=0 ctermfg=7
+highlight User6 ctermbg=0 ctermfg=8
 " }}}
 
 " tabs are 4 columns wide, each indentation level is one tab
@@ -131,20 +129,20 @@ nnoremap <c-f> :Lines<cr>
 
 set scrolloff=3			" keep a 3-line pad above and below the cursor
 
-" use j and k to scroll jump (and also center vertically)
-nnoremap <c-k> <c-u>zz
-nnoremap <c-j> <c-d>zz
-
 " move cursor by display lines (helps when a line is visually wrapped)
 nnoremap k gk
 nnoremap j gj
+
+" center vertically when scroll jumping
+nnoremap <c-u> <c-u>zz
+nnoremap <c-d> <c-d>zz
 
 " go to beginning/end of line rather than the window (horizonal rather than vertical)
 nnoremap H ^
 nnoremap L $
 
 " use tab to move to matching bracket
-nnoremap <tab> %
+noremap <tab> %
 
 " go to buffer last seen in this window (aka alternate file)
 nnoremap <c-b> <c-^>
