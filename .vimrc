@@ -22,7 +22,7 @@ set background=dark			" use dark background (duh)
 set number					" show line number of current line...
 set relativenumber			" ...and relative line number of other lines
 set cursorline				" highlight current line
-set synmaxcol=500			" max column to syntax-highlight (for performance)
+set synmaxcol=1000			" max column to syntax-highlight (for performance)
 set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
 set showmatch				" highlight matching bracket
@@ -150,6 +150,9 @@ nnoremap <c-b> <c-^>
 nnoremap gb :Buffers<cr>
 " unload current buffer
 nnoremap <leader>bd :bd<cr>
+
+" go to mark (ain't nobody got time for backtick)
+nnoremap gm `
 
 " }}}
 
