@@ -134,25 +134,25 @@ nnoremap k gk
 nnoremap j gj
 
 " center vertically when scroll jumping
-nnoremap <c-u> <c-u>zz
-nnoremap <c-d> <c-d>zz
+noremap <c-u> <c-u>zz
+noremap <c-d> <c-d>zz
 
 " go to beginning/end of line rather than the window (horizonal rather than vertical)
-nnoremap H ^
-nnoremap L $
+noremap H ^
+noremap L $
 
 " use tab to move to matching bracket
 noremap <tab> %
 
-" go to buffer last seen in this window (aka alternate file)
-nnoremap <c-b> <c-^>
 " list buffers
 nnoremap gb :Buffers<cr>
+" go to buffer last seen in this window (aka alternate file)
+nnoremap <c-b> <c-^>
 " unload current buffer
 nnoremap <leader>bd :bd<cr>
 
 " go to mark (ain't nobody got time for backtick)
-nnoremap gm `
+noremap gm `
 
 " }}}
 
@@ -212,12 +212,6 @@ endif
 " insert current datetime in ISO format
 inoremap <c-t> <c-r>=strftime('%Y-%m-%d %H:%M:%S')<c-m>
 
-" php imaps
-" TODO these aren't working since I changed to space leader
-"autocmd FileType php inoremap <buffer> <leader>d $
-"autocmd FileType php inoremap <buffer> <leader>a ->
-"autocmd FileType php inoremap <buffer> <leader>A =>
-
 " reformat associative php array
 " expand into multiple lines
 ":'<,'>s/\[/\[\r/|s/=>/ => /g|s/, /,\r/g|s/\]/,\r\]/
@@ -236,7 +230,7 @@ set undodir^=$HOME/.vim/undodir//		" keep undo files in a centralized location
 set undofile							" persistent undo tree
 set history=1000						" cmd-line history
 
-" quickly edit and source vimrc
+" quickly edit and reload vimrc
 nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
