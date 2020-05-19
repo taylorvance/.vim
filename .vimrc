@@ -21,7 +21,7 @@ colorscheme solarized		" use Ethan Schoonover's Solarized colorscheme
 set background=dark			" use dark background (duh)
 set number					" show line number of current line...
 set relativenumber			" ...and relative line number of other lines
-"set cursorline				" highlight current line
+set cursorline				" highlight current line
 set synmaxcol=500			" max column to syntax-highlight (for performance)
 set showcmd					" show prev cmd in bottom
 set showmode				" if in Insert, Replace, or Visual mode, show in bottom left
@@ -184,9 +184,8 @@ nnoremap <leader>v V`]
 "nnoremap <leader>V `[v`]
 
 " open a new line but stay in normal mode at current position
-"TODO: why is this clearing the default paste register?
-nnoremap <leader>o m`o<esc>S<esc>``
-nnoremap <leader>O m`O<esc>S<esc>``
+nnoremap <leader>o m`o<esc>``
+nnoremap <leader>O m`O<esc>``
 
 " If the unnamed register contains a newline, adjust indent of the pasted text to match the indent around it.
 " Else, do a normal paste.
