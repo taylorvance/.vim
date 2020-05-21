@@ -35,21 +35,19 @@ set mouse=a					" enable mouse in all modes
 set clipboard=unnamedplus	" use the system clipboard
 
 " < STATUSLINE > {{{
-set laststatus=2				" always show the status line
+set laststatus=2                " always show the status line
 set statusline=
-set statusline+=%1*\ \ %f%*		" relative filepath
-set statusline+=%2*\ \ %m%*		" modified flag
-set statusline+=%3*%=%*			" switch to right side
-set statusline+=%4*%c%V%*		" col num and virtual col num
-set statusline+=%5*\ \ %l/%L%*	" line num and total lines
-set statusline+=%6*\ (%p%%)%*	" percentage through file
+set statusline+=%1*\ %y%*       " file type
+set statusline+=%2*\ \ %f%*     " relative filepath
+set statusline+=%3*\ \ %m%*     " modified flag
+set statusline+=%1*%=%*         " switch to right side
+set statusline+=%1*%c%V%*       " col num and virtual col num
+set statusline+=%2*\ \ %l/%L%*  " line num and total lines
+set statusline+=%1*\ (%p%%)%*   " percentage through file
 " statusline coloring
-highlight User1 ctermbg=0 ctermfg=7
-highlight User2 ctermbg=0 ctermfg=9 cterm=bold
-highlight User3 ctermbg=0
-highlight User4 ctermbg=0 ctermfg=12
-highlight User5 ctermbg=0 ctermfg=7
-highlight User6 ctermbg=0 ctermfg=8
+highlight User1 ctermbg=0 ctermfg=12
+highlight User2 ctermbg=0 ctermfg=7
+highlight User3 ctermbg=0 ctermfg=9 cterm=bold
 " }}}
 
 " tabs are 4 columns wide, each indentation level is one tab
@@ -92,6 +90,8 @@ let g:gitgutter_diff_args = '-w'
 " make gitgutter less of a resource hog
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
+" but make sure it updates after a write
+autocmd BufWritePost * GitGutter
 " }}}
 
 " }}}
