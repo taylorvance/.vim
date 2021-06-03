@@ -1,3 +1,5 @@
+*\[deprecated for comprehensive [dotfiles](https://github.com/taylorvance/dotfiles) solution\]*
+
 # .vim
 
 This is my portable vim setup.
